@@ -1,2 +1,3 @@
-# p15_photo_gallery
-Training Project Photo Gallery
+# p15_bildergalerie
+
+A new Flutter project.
