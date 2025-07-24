@@ -124,7 +124,7 @@ class Home extends StatelessWidget {
                         padding: const EdgeInsets.all(2),
                         child: RichTextRow(
                           firstText: 'Handgeschrieneme Code-Zeilen: ',
-                          secondText: '857', // ohne Home
+                          secondText: '1043', // ohne Home
                           fontSize: 18,
                           firstFontWeight: FontWeight.bold,
                           secondFontWeight: FontWeight.normal,
@@ -134,7 +134,7 @@ class Home extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(2),
                         child: RichTextRow(
-                          firstText: 'Eingebundene Libraries (pub.dev):   ',
+                          firstText: 'Eingebundene Libraries (pub.dev):     ',
                           secondText: '2', // ohne Home & richtextrow
                           fontSize: 18,
                           firstFontWeight: FontWeight.bold,
