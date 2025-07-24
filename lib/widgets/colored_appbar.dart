@@ -50,11 +50,22 @@ class ColoredAppBar extends AppBar {
             color: Color(0xFFE2E2E2),
           ),
           onPressed: () {
+            /*
             final navController = Provider.of<NavigationController>(
               context,
               listen: false,
             );
-            navController.goBack();
+            navController.handleBackNavigation(context);
+            */
+            if (Navigator.of(context).canPop()) {
+              Navigator.of(context).pop();
+            } else {
+              final navController = Provider.of<NavigationController>(
+                context,
+                listen: false,
+              );
+              navController.goBack();
+            }
           },
         ),
       );
