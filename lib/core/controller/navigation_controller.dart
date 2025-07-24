@@ -21,6 +21,15 @@ class NavigationController extends ChangeNotifier {
   Map<String, dynamic> get currentScreen =>
       _screenList.isNotEmpty ? _screenList[_currentScreenIndex] : {};
 
+  // Buttons für Gallerie-Steuerung
+  int _galleryCrossAxisCount = 2; // Standard-Wert 2-Spaltig
+  int get galleryCrossAxisCount => _galleryCrossAxisCount;
+
+  void setGalleryCrossAxisCount(int count) {
+    _galleryCrossAxisCount = count;
+    notifyListeners();
+  }
+
   //globale Screenliste setzen
   void setScreenList(List<Map<String, dynamic>> screens) {
     _screenList = screens;

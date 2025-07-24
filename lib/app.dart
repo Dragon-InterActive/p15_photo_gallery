@@ -14,7 +14,7 @@ class GalleryApp extends StatelessWidget {
   const GalleryApp({super.key});
 
   static const List<Map<String, dynamic>> screenList = [
-    {'screen': Home(), 'title': 'Gallery by Nemo', 'isHome': true},
+    {'screen': Home(), 'title': 'Gallery by Kaya', 'isHome': true},
     {'screen': Galery(), 'title': 'Photo Gallery', 'isHome': false},
     {'screen': Profile(), 'title': 'About me', 'isHome': false},
     //{'screen': GaleryDetails(), 'title': 'Details', 'isHome': false},
@@ -30,16 +30,35 @@ class GalleryApp extends StatelessWidget {
         return controller;
       },
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: Consumer<NavigationController>(
           builder: (context, controller, child) {
             final currentScreen = controller.currentScreen;
 
             return Scaffold(
+              backgroundColor: Color(0xFFE2E2E2),
               appBar: ColoredAppBar(
-                title: currentScreen['title'] ?? 'Gallery by Nemo',
+                title: currentScreen['title'] ?? 'Gallery by Kaya',
                 isHome: currentScreen['isHome'] ?? false,
               ),
-              body: SafeArea(child: currentScreen['screen'] ?? Container()),
+              body: AnimatedSwitcher(
+                duration: const Duration(milliseconds: 300),
+                transitionBuilder: (Widget child, Animation<double> animation) {
+                  return SlideTransition(
+                    position: Tween<Offset>(
+                      begin: const Offset(1.0, 0.0),
+                      end: Offset.zero,
+                    ).animate(animation),
+                    child: child,
+                  );
+                },
+                child: Container(
+                  key: ValueKey(controller.currentScreenIndex),
+                  child: SafeArea(
+                    child: currentScreen['screen'] ?? Container(),
+                  ),
+                ),
+              ),
               bottomNavigationBar: const ColoredNavbar(),
             );
           },
